@@ -8,44 +8,105 @@
 </head>
 <body>
 <!--    추가-->
-<h1 th:text="${msg}">표시되는 부분</h1>
-<h1 th:text="'hello World'"></h1>
-<h1>안녕하세요! [[${msg}]]</h1>
+<!-- <h1 th:text="${msg}">표시되는 부분</h1> -->
+<!-- <h1 th:text="'hello World'"></h1> -->
+<!-- <h1>안녕하세요! [[${msg}]]</h1> -->
 
-<h1 th:text="'오늘의 날씨는 ' + '맑음 ' + '입니다'">표시하는부분</h1>
+<!-- <h1 th:text="'오늘의 날씨는 ' + '맑음 ' + '입니다'">표시하는부분</h1> -->
 
-<h1 th:text="|안녕하세요 ${msg}씨|">표시하는부분</h1>
+<!-- <h1 th:text="|안녕하세요 ${msg}씨|">표시하는부분</h1> -->
 
-<div th:with="a=1,b=2">
-	<span th:text="|${a} + ${b} = ${a+b}|"></span>
+<!-- <div th:with="a=1,b=2"> -->
+<!-- 	<span th:text="|${a} + ${b} = ${a+b}|"></span> -->
+<!-- </div> -->
+
+<!-- <span th:text="1 > 10"></span> -->
+<!-- <span th:text="1 < 10"></span> -->
+<!-- <span th:text="1 >= 10"></span> -->
+<!-- <span th:text="1 <= 10"></span> -->
+<!-- <span th:text="1 == 10"></span> -->
+<!-- <span th:text="1 != 10"></span> -->
+<!-- <span th:text="길동 == 길동"></span> -->
+<!-- <span th:text="길동 != 길동"></span> -->
+
+<!-- <p th:text="${msg} == '길동 '? ' 길동입니다!':'길동이가 아닙니다'"></p> -->
+
+<!-- <div th:if="${msg} == '타임리프'"> -->
+<!-- 	<p>길동 씨 입니다!</p> -->
+<!-- </div> -->
+
+<!-- <div th:unless="${msg} == '영희'"> -->
+<!-- 	<p>영희 씨가 아닙니다</p> -->
+<!-- </div> -->
+
+
+<!-- <div th:switch="${msg}"> -->
+<!-- 	<p th:case="길동" th:text="|${msg}입니다!|"></p> -->
+<!-- 	<p th:case="타임리프" th:text="|${msg}입니다!|"></p> -->
+<!-- 	<p th:case="철수" th:text="|${msg}입니다!|"></p> -->
+<!-- 	<p th:case="*" th:text="'명부에 없습니다'"></p> -->
+<!-- </div> -->
+
+<!-- <p th:text="${mb.ID}">ID</p> -->
+<!-- <p th:text="${mb.NAME}">이름</p> -->
+<!-- <p th:text="${mb['ID']}">ID: []로 접근</p> -->
+<!-- <p th:text="${mb['NAME']}">이름: []로 접근</p> -->
+
+
+<!-- <div th:object="${mb}"> -->
+<!-- 	<p th:text="*{ID}">아이디</p> -->
+<!-- 	<p th:text="*{NAME}">이름</p> -->
+<!-- 	<p th:text="*{['ID']}">ID []로 접근</p> -->
+<!-- 	<p th:text="*{['NAME']}">이름 []로 접근</p> -->
+<!-- </div> -->
+
+<!-- 참조(List) -->
+
+<!-- <p th:text="${list[0]}">방위</p> -->
+<!-- <p th:text="${list[1]}">방위</p> -->
+<!-- <p th:text="${list[2]}">방위</p> -->
+<!-- <p th:text="${list[3]}">방위</p> -->
+
+
+<!-- <p th:text="${map.kim.NAME}">이름 1</p> -->
+<!-- <p th:text="${map.son.NAME}">이름 2</p> -->
+<!-- <p th:text="${map['kim']['NAME']}">[]이름 1</p> -->
+<!-- <p th:text="${map['son']['NAME']}">[]이름 2</p> -->
+
+
+<!-- 반복 -->
+
+<!-- <div th:each="member : ${members}"> -->
+<!-- 	<p>[[${member.ID}]] : [[${member.NAME}]]</p> -->
+<!-- </div> -->
+
+<!-- <div th:each="member , s: ${members}" th:object="${member}" > -->
+<!-- 	<p> -->
+<!-- 		index -> [[${s.index}]], count -> [[${s.count}]], -->
+<!-- 		size -> [[${s.size}]], current -> [[${s.current}]], -->
+<!-- 		even -> [[${s.even}]], odd -> [[${s.odd}]], -->
+<!-- 		first -> [[${s.first}]], last -> [[${s.last}]], -->
+<!-- 		[[*{ID}]] : [[*{NAME}]] -->
+<!-- 	</p> -->
+<!-- </div> -->
+
+
+
+<!-- 	<td th:text="*{ID}"></td> -->
+<!-- 	<td th:text="*{NAME}"></td> -->
+<!-- 	<p> -->
+<!-- 		index -> [[${s.index}]], count -> [[${s.count}]], -->
+<!-- 		size -> [[${s.size}]], current -> [[${s.current}]], -->
+<!-- 		even -> [[${s.even}]], odd -> [[${s.odd}]], -->
+<!-- 		first -> [[${s.first}]], last -> [[${s.last}]], -->
+<!-- 		ID -> [[*{ID}]], NAME -> [[*{NAME}]] -->
+<!-- 	</p> -->
+
+<div th:each="member, s : ${members}" th:object="${member}">
+	<p th:text="${s.index + 1}"></p>
+
 </div>
 
-<span th:text="1 > 10"></span>
-<span th:text="1 < 10"></span>
-<span th:text="1 >= 10"></span>
-<span th:text="1 <= 10"></span>
-<span th:text="1 == 10"></span>
-<span th:text="1 != 10"></span>
-<span th:text="길동 == 길동"></span>
-<span th:text="길동 != 길동"></span>
-
-<p th:text="${msg} == '길동 '? ' 길동입니다!':'길동이가 아닙니다'"></p>
-
-<div th:if="${msg} == '타임리프'">
-	<p>길동 씨 입니다!</p>
-</div>
-
-<div th:unless="${msg} == '영희'">
-	<p>영희 씨가 아닙니다</p>
-</div>
-
-
-<div th:switch="${msg}">
-	<p th:case="길동" th:text="|${msg}입니다!|"></p>
-	<p th:case="타임리프" th:text="|${msg}입니다!|"></p>
-	<p th:case="철수" th:text="|${msg}입니다!|"></p>
-	<p th:case="*" th:text="'명부에 없습니다'"></p>
-</div>
 
 </body>
 </html>
